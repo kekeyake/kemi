@@ -1,0 +1,484 @@
+@charset "UTF-8";
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  background: #222;
+}
+
+:where(html, body) {
+  min-height: 100dvh;
+}
+
+:where(:lang(ko)) {
+  word-break: keep-all;
+}
+
+:where(body) {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+:where(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+:where([class]) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:where([class])::before,
+:where([class])::after {
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+:where(ol[class], ul[class]) {
+  list-style: none;
+}
+
+:where(hr[class], button[class], fieldset[class], iframe[class], input[class], select[class], textarea[class]) {
+  border: 0;
+}
+
+:where(button[class], dialog[class], input[class], mark[class], meter[class], progress[class]) {
+  background-color: transparent;
+}
+
+:where(table[class]) {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+}
+
+:where(button[class], input[class], meter[class], progress[class], select[class], textarea[class]) {
+  appearance: none;
+}
+
+.loginWrap {
+  background: #222;
+  position: relative;
+}
+.loginWrap::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 100%;
+}
+.loginWrap__logo {
+  position: absolute;
+  top: 18.9333333333vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loginWrap__logo img {
+  width: 16vw;
+}
+.loginWrap__email {
+  position: absolute;
+  top: 62.6666666667vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loginWrap .input-text {
+  width: 83.2vw;
+  height: 12.8vw;
+  background-color: #101010;
+  appearance: none;
+  border: 0;
+  color: #fff;
+  padding: 4vw 5.8666666667vw;
+  box-sizing: border-box;
+  font-size: 4.2666666667vw;
+  border-radius: 2.6666666667vw;
+}
+.loginWrap .input-text::placeholder {
+  color: #4e4e4e;
+}
+.loginWrap__join {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  z-index: 2;
+  background: #222;
+}
+.loginWrap__success {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  z-index: 2;
+  background: #222;
+}
+
+.loginStep {
+  position: absolute;
+  z-index: 2;
+  top: 114.1333333333vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loginStep button {
+  color: #fff;
+  font-size: 4.2666666667vw;
+  font-weight: 300;
+  cursor: pointer;
+}
+.loginStep__bar {
+  position: relative;
+  margin-bottom: 2.6666666667vw;
+  height: 1.3333333333vw;
+  background-color: #000;
+  width: 78.6666666667vw;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+.loginStep__bar--status {
+  position: absolute;
+  background-color: #e1e1e1;
+  height: 100%;
+  width: 10%;
+}
+.loginStep__back {
+  position: absolute;
+  left: 0;
+}
+.loginStep__next {
+  position: absolute;
+  right: 0;
+}
+
+.loginWrap .loginWrap__layer > *:not(.loginWrap__layer--closed) {
+  display: none;
+}
+.loginWrap .tit {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8.2666666667vw;
+  font-size: 4.2666666667vw;
+}
+.loginWrap[login-step="2"] .step2 {
+  display: block;
+}
+.loginWrap[login-step="2"] .step2 ~ * {
+  display: none;
+}
+.loginWrap[login-step="3"] .step3 {
+  display: block;
+}
+.loginWrap[login-step="3"] .step3 ~ * {
+  display: none;
+}
+.loginWrap[login-step="4"] .step4 {
+  display: block;
+}
+.loginWrap[login-step="4"] .step4 ~ * {
+  display: none;
+}
+.loginWrap[login-step="5"] .step5 {
+  display: block;
+}
+.loginWrap[login-step="5"] .step5 ~ * {
+  display: none;
+}
+.loginWrap[login-step="1"] .loginStep__bar--status {
+  width: 20% !important;
+}
+.loginWrap[login-step="2"] .loginStep__bar--status {
+  width: 40% !important;
+}
+.loginWrap[login-step="3"] .loginStep__bar--status {
+  width: 60% !important;
+}
+.loginWrap[login-step="4"] .loginStep__bar--status {
+  width: 80% !important;
+}
+.loginWrap[login-step="5"] .loginStep__bar--status {
+  width: 100% !important;
+}
+
+.loginWrap[login-step="1"] .loginStep__back {
+  display: none;
+}
+.loginWrap[login-step="1"] .loginWrap__layer {
+  display: none;
+}
+
+.loginWrap[login-step="2"] .loginStep__back,
+.loginWrap[login-step="3"] .loginStep__back,
+.loginWrap[login-step="4"] .loginStep__back,
+.loginWrap[login-step="5"] .loginStep__back {
+  display: block;
+  color: #858585;
+}
+.loginWrap[login-step="2"] .loginWrap__layer,
+.loginWrap[login-step="3"] .loginWrap__layer,
+.loginWrap[login-step="4"] .loginWrap__layer,
+.loginWrap[login-step="5"] .loginWrap__layer {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background: #222;
+}
+.loginWrap[login-step="2"] .loginWrap__layer--closed,
+.loginWrap[login-step="3"] .loginWrap__layer--closed,
+.loginWrap[login-step="4"] .loginWrap__layer--closed,
+.loginWrap[login-step="5"] .loginWrap__layer--closed {
+  position: absolute;
+  right: 6.1333333333vw;
+  top: 6.1333333333vw;
+  width: 6.1333333333vw;
+  height: 6.6666666667vw;
+  background: url("../img/login_closed.svg") no-repeat center center/cover;
+  cursor: pointer;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step2,
+.loginWrap[login-step="3"] .loginWrap__layer .step2,
+.loginWrap[login-step="4"] .loginWrap__layer .step2,
+.loginWrap[login-step="5"] .loginWrap__layer .step2 {
+  position: absolute;
+  top: 62.6666666667vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step3,
+.loginWrap[login-step="3"] .loginWrap__layer .step3,
+.loginWrap[login-step="4"] .loginWrap__layer .step3,
+.loginWrap[login-step="5"] .loginWrap__layer .step3 {
+  padding-top: 37.3333333333vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step3 .radio-button,
+.loginWrap[login-step="3"] .loginWrap__layer .step3 .radio-button,
+.loginWrap[login-step="4"] .loginWrap__layer .step3 .radio-button,
+.loginWrap[login-step="5"] .loginWrap__layer .step3 .radio-button {
+  display: none; /* 기본 라디오 버튼 숨기기 */
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step3 .job-button,
+.loginWrap[login-step="3"] .loginWrap__layer .step3 .job-button,
+.loginWrap[login-step="4"] .loginWrap__layer .step3 .job-button,
+.loginWrap[login-step="5"] .loginWrap__layer .step3 .job-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 88vw;
+  height: 13.0666666667vw;
+  margin: 0 auto 3.4666666667vw;
+  color: white;
+  border: 1px solid #B5B5B5;
+  border-radius: 2.6666666667vw;
+  cursor: pointer;
+  font-size: 4.2666666667vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step3 .job-button.selected,
+.loginWrap[login-step="3"] .loginWrap__layer .step3 .job-button.selected,
+.loginWrap[login-step="4"] .loginWrap__layer .step3 .job-button.selected,
+.loginWrap[login-step="5"] .loginWrap__layer .step3 .job-button.selected {
+  background-color: #45a049;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4,
+.loginWrap[login-step="3"] .loginWrap__layer .step4,
+.loginWrap[login-step="4"] .loginWrap__layer .step4,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 {
+  padding-top: 37.3333333333vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbtiWrap,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbtiWrap,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbtiWrap,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbtiWrap {
+  padding-inline: 2.6666666667vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbtiWrap__step,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbtiWrap__step,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbtiWrap__step,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbtiWrap__step {
+  display: flex;
+  justify-content: center;
+  gap: 2.6666666667vw;
+  width: 80%;
+  margin: 0 auto;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbtiWrap__text,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbtiWrap__text,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbtiWrap__text,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbtiWrap__text {
+  display: flex;
+  justify-content: space-between;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbti-btn,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbti-btn,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbti-btn,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbti-btn {
+  display: flex;
+  width: 13.8666666667vw;
+  height: 10.1333333333vw;
+  margin: 0 auto 3.4666666667vw;
+  border: 1px solid #B5B5B5;
+  border-radius: 2.6666666667vw;
+  cursor: pointer;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbti-btn.active,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbti-btn.active,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbti-btn.active,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbti-btn.active {
+  background-color: #45a049;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbti-step,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbti-step,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbti-step,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbti-step {
+  font-size: 4.2666666667vw;
+  color: #fff;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step4 .mbti-step:last-child,
+.loginWrap[login-step="3"] .loginWrap__layer .step4 .mbti-step:last-child,
+.loginWrap[login-step="4"] .loginWrap__layer .step4 .mbti-step:last-child,
+.loginWrap[login-step="5"] .loginWrap__layer .step4 .mbti-step:last-child {
+  margin-left: auto;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5,
+.loginWrap[login-step="3"] .loginWrap__layer .step5,
+.loginWrap[login-step="4"] .loginWrap__layer .step5,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 {
+  padding-top: 37.3333333333vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .langugeWrap,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .langugeWrap,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .langugeWrap,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .langugeWrap {
+  padding-inline: 7.4666666667vw 2.6666666667vw;
+  display: flex;
+  align-items: center;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .langugeWrap.langugeWrap,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .langugeWrap.langugeWrap,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .langugeWrap.langugeWrap,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .langugeWrap.langugeWrap {
+  margin-top: 2.6666666667vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .lang-select,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .lang-select,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .lang-select,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .lang-select {
+  border: 1px solid #DEDEDE;
+  background: #212121;
+  color: #fff;
+  appearance: menulist-button;
+  font-size: 2.9333333333vw;
+  width: 34.6666666667vw;
+  height: 10.6666666667vw;
+  padding-inline: 2.6666666667vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .lang-select.lang-select,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .lang-select.lang-select,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .lang-select.lang-select,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .lang-select.lang-select {
+  margin-left: 1.3333333333vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .item-box,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .item-box,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .item-box,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .item-box {
+  display: flex;
+  margin-left: auto;
+  gap: 1.3333333333vw;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .item-box .btn-lang,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .item-box .btn-lang,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .item-box .btn-lang,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .item-box .btn-lang {
+  appearance: none;
+  border: 1px solid #DEDEDE;
+  width: 7.2vw;
+  height: 7.2vw;
+  cursor: pointer;
+  border-radius: 1.3333333333vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.7333333333vw;
+  font-weight: bold;
+  color: #fff;
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .item-box .btn-lang.add::before,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .item-box .btn-lang.add::before,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .item-box .btn-lang.add::before,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .item-box .btn-lang.add::before {
+  content: "+";
+}
+.loginWrap[login-step="2"] .loginWrap__layer .step5 .item-box .btn-lang.delete::before,
+.loginWrap[login-step="3"] .loginWrap__layer .step5 .item-box .btn-lang.delete::before,
+.loginWrap[login-step="4"] .loginWrap__layer .step5 .item-box .btn-lang.delete::before,
+.loginWrap[login-step="5"] .loginWrap__layer .step5 .item-box .btn-lang.delete::before {
+  content: "-";
+}
+
+.loginWrap[login-step=join] .loginWrap__join {
+  display: block;
+  padding-top: 37.3333333333vw;
+}
+.loginWrap[login-step=join] .joinList {
+  padding-inline: 8vw;
+  display: flex;
+  flex-direction: column;
+  gap: 14.9333333333vw;
+}
+.loginWrap[login-step=join] .joinList__item {
+  display: flex;
+  justify-content: space-between;
+}
+.loginWrap[login-step=join] .joinList__date {
+  font-size: 5.3333333333vw;
+  color: #fff;
+}
+.loginWrap[login-step=join] .joinList__btn {
+  border-radius: 5.3333333333vw;
+  width: 16.8vw;
+  height: 7.7333333333vw;
+  font-size: 3.7333333333vw;
+  color: #000;
+  font-weight: 700;
+  background-color: #00FFE9;
+  cursor: pointer;
+}
+.loginWrap[login-step=join] .loginStep {
+  display: none;
+}
+
+.loginWrap[login-step=success] .loginStep {
+  display: none;
+}
+.loginWrap[login-step=success] .loginWrap__success {
+  display: block;
+  font-size: 9.6vw;
+  text-align: center;
+  padding: 17.8666666667vw 9.0666666667vw;
+}
+.loginWrap[login-step=success] .loginWrap__success h2 {
+  font-weight: 500;
+  color: #fff;
+}
+.loginWrap[login-step=success] .loginWrap__success .txt {
+  font-weight: 300;
+  color: #fff;
+  word-break: keep-all;
+}
+.loginWrap[login-step=success] .loginWrap__success .txt.color-yellow {
+  color: #F6FB06;
+}
+.loginWrap[login-step=success] .loginWrap__success .txt + .txt {
+  margin-top: 10.6666666667vw;
+}
+
+/*# sourceMappingURL=login.css.map */

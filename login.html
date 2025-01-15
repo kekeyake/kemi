@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+  <title>KEMI</title>
+</head>
+<body>
+  <main>
+    <article class="loginWrap" login-step="1">
+      <h1 class="loginWrap__logo"><img src="img/login_logo.svg" alt="KEMI"></h1>
+      <section class="loginWrap__email">
+        <input type="text" placeholder="Email" class="input-text">
+      </section>
+      <section class="loginWrap__layer">
+        <button class="loginWrap__layer--closed" type="button"></button>
+        <div class="step2">
+          <input type="text" placeholder="Name" class="input-text">
+        </div>
+        <div class="step3">
+          <p class="tit">right now, I am...</p>
+          <label class="job-button" id="student-btn">
+            <input type="radio" name="job" value="student" class="radio-button"> Student
+          </label>
+          <label class="job-button" id="worker-btn">
+            <input type="radio" name="job" value="worker" class="radio-button"> Worker
+          </label>
+          <label class="job-button" id="traveller-btn">
+            <input type="radio" name="job" value="traveller" class="radio-button"> Traveller
+          </label>
+        </div>
+        <div class="step4">
+          <p class="tit">Outgoing or Introverted?</p>
+          <div class="mbtiWrap">
+            <div class="mbtiWrap__step">
+              <button class="mbti-btn" type="button" mbti-level="1"></button>
+              <button class="mbti-btn" type="button" mbti-level="2"></button>
+              <button class="mbti-btn" type="button" mbti-level="3"></button>
+              <button class="mbti-btn" type="button" mbti-level="4"></button>
+              <button class="mbti-btn" type="button" mbti-level="5"></button>
+            </div>
+            <div class="mbtiWrap__text">
+              <span class="mbti-step">Introverted</span>
+              <span class="mbti-step">Outgoing</span>
+            </div>
+          </div>
+        </div>
+        <div class="step5">
+          <p class="tit">Which language you can speak?</p>
+          <div class="langugeWrap">
+            <select name="" id="" class="lang-select">
+              <option value="">Language</option>
+              <option value="English">English</option>
+              <option value="Korean">Korean</option>
+            </select>
+            <select name="" id="" class="lang-select">
+              <option value="">Level</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <div class="item-box">
+              <button class="btn-lang add" type="button"></button>
+              <button class="btn-lang delete" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="loginStep">
+        <div class="loginStep__bar">
+          <span class="loginStep__bar--status"></span>
+        </div>
+        <button class="loginStep__back" type="button">Back</button>
+        <button class="loginStep__next" type="button">Next</button>
+      </section>
+      <section class="loginWrap__join">
+        <p class="tit">Which event?</p>
+        <ul class="joinList">
+          <li class="joinList__item">
+            <span class="joinList__date">25th Jan 7:30pm</span>
+            <button class="joinList__btn" type="button">Join</button>
+          </li>
+          <li class="joinList__item">
+            <span class="joinList__date">25th Jan 7:30pm</span>
+            <button class="joinList__btn" type="button">Join</button>
+          </li>
+        </ul>
+      </section>
+      <section class="loginWrap__success">
+        <h2>Notice</h2>
+        <p class="txt color-yellow">We'll email you about our app.</p>
+        <p class="txt color-yellow">Next time, please sign up for better service</p>
+        <p class="txt">Feel awkward <br> sharing <br> Instagram ID?</p>
+        <p class="txt">Use the app to "Kemi" each other and you can DM</p>
+        <p class="txt">Bring a friend <br>= Free entry for both!</p>
+        <p class="txt">Not a dating meetup.</p>
+        <p class="txt">Stay safe. <br>Report easily through the app.</p>
+      </section>
+    </article>
+  </main>
+  <script src="js/login.js"></script>
+</body>
+</html>

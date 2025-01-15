@@ -1,0 +1,411 @@
+// 디바이스 너비 변수(figma 기준)
+$device-width: 375px;
+
+// px을 vw로 변환하는 함수
+@function vw($px) {
+  @return calc($px / $device-width) * 100vw;
+}
+// step 함수
+@function step-selector($step) {
+  @return "&[login-step=\"#{$step}\"] .step#{$step}";
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  background: #222;
+}
+:where(html, body) {
+  min-height: 100dvh;
+}
+
+:where(:lang(ko)) {
+  word-break: keep-all;
+}
+
+:where(body) {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+:where(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+:where([class]) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:where([class])::before,
+:where([class])::after {
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+:where(ol[class], ul[class]) {
+  list-style: none;
+}
+
+:where(hr[class], button[class], fieldset[class], iframe[class], input[class], select[class], textarea[class]) {
+  border: 0;
+}
+
+:where(button[class], dialog[class], input[class], mark[class], meter[class], progress[class]) {
+  background-color: transparent;
+}
+
+:where(table[class]) {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+}
+
+:where(button[class], input[class], meter[class], progress[class], select[class], textarea[class]) {
+  appearance: none;
+}
+
+// login ui
+.loginWrap {
+  background: #222;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 100%;
+  }
+  &__logo {
+    position: absolute;
+    top: vw(71px);
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      width: vw(60px);
+    }
+  }
+  &__email {
+    position: absolute;
+    top: vw(235px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .input-text {
+    width: vw(312px);
+    height: vw(48px);
+    background-color: #101010;
+    appearance: none;
+    border: 0;
+    color:#fff;
+    padding:vw(15px) vw(22px);
+    box-sizing: border-box;
+    font-size: vw(16px);
+    border-radius: vw(10px);
+    &::placeholder {
+      color:#4e4e4e;
+    }
+  }
+  &__join {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    z-index: 2;
+    background: #222;
+  }
+  &__success {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    z-index: 2;
+    background: #222;
+  }
+}
+// login step
+.loginStep {
+  position: absolute;
+  z-index: 2;
+  top: vw(428px);
+  left: 50%;
+  transform: translateX(-50%);
+  button {
+    color: #fff;
+    font-size: vw(16px);
+    font-weight: 300;
+    cursor: pointer;
+  }
+  &__bar {
+    position: relative;
+    margin-bottom: vw(10px);
+    height: vw(5px);
+    background-color: #000;
+    width: vw(295px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    &--status {
+      position: absolute;
+      background-color: #e1e1e1;
+      height: 100%;
+      width: 10%;
+    }
+  }
+  &__back {
+    position: absolute;
+    left: 0;
+  }
+  &__next {
+    position: absolute;
+    right: 0;
+  }
+}
+// login step status
+$steps: 1 20%, 2 40%, 3 60%, 4 80%, 5 100%;
+.loginWrap {
+  .loginWrap__layer > *:not(.loginWrap__layer--closed) {
+    display: none; // 모든 단계 기본적으로 숨김
+  }
+  .tit {
+    color:#fff;
+    text-align: center;
+    margin-bottom: vw(31px);
+    font-size: vw(16px);
+  }
+
+  @each $step in 2, 3, 4, 5 {
+    #{step-selector($step)} {
+      display: block;
+    }
+
+    #{step-selector($step)} ~ * {
+      display: none; // 현재 단계 외의 요소 숨김
+    }
+  }
+  @each $step, $width in $steps {
+    &[login-step="#{$step}"] .loginStep__bar--status {
+      width: #{$width} !important;
+    }
+  }
+}
+.loginWrap[login-step="1"] {
+  .loginStep__back {
+    display: none;
+  }
+  .loginWrap__layer {
+    display: none;
+  }
+}
+.loginWrap[login-step="2"],
+.loginWrap[login-step="3"],
+.loginWrap[login-step="4"],
+.loginWrap[login-step="5"] {
+  .loginStep__back {
+    display: block;
+    color:#858585;
+  }
+  .loginWrap__layer {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background: #222;
+    &--closed {
+      position: absolute;
+      right: vw(23px);
+      top: vw(23px);
+      width: vw(23px);
+      height: vw(25px);
+      background: url("../img/login_closed.svg") no-repeat center center / cover;
+      cursor: pointer;
+    }
+    .step2 {
+      position: absolute;
+      top: vw(235px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .step3 {
+      padding-top: vw(140px);
+      .radio-button {
+        display: none; /* 기본 라디오 버튼 숨기기 */
+      }
+      .job-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: vw(330px);
+        height: vw(49px);
+        margin:0 auto vw(13px);
+        color: white;
+        border: 1px solid #B5B5B5;
+        border-radius: vw(10px);
+        cursor: pointer;
+        font-size: vw(16px);
+        &.selected {
+          background-color: #45a049;
+        }
+      }
+    }
+    .step4 {
+      padding-top: vw(140px);
+      .mbtiWrap {
+        padding-inline: vw(10px) ;
+        &__step {
+          display: flex;
+          justify-content: center;
+          gap: vw(10px);
+          width: 80%;
+          margin: 0 auto;
+        }
+        &__text {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      .mbti-btn {
+        display: flex;
+        width: vw(52px);
+        height: vw(38px);
+        margin:0 auto vw(13px);
+        border: 1px solid #B5B5B5;
+        border-radius: vw(10px);
+        cursor: pointer;
+        &.active {
+          background-color: #45a049;
+        }
+      }
+      .mbti-step {
+        font-size: vw(16px);
+        color:#fff;
+        &:last-child {
+          margin-left: auto;
+        }
+      }
+    }
+    .step5 {
+      padding-top: vw(140px);
+      .langugeWrap {
+        padding-inline: vw(28px) vw(10px);
+        display: flex;
+        align-items: center;
+        &.langugeWrap {
+          margin-top: vw(10px);
+        }
+      }
+      .lang-select {
+        border: 1px solid #DEDEDE;
+        background: #212121;
+        color:#fff;
+        appearance: menulist-button;
+        font-size: vw(11px);
+        width: vw(130px);
+        height: vw(40px);
+        padding-inline: vw(10px);
+        &.lang-select {
+          margin-left: vw(5px);
+        }
+      }
+      .item-box {
+        display: flex;
+        margin-left: auto;
+        gap: vw(5px);
+        .btn-lang {
+          appearance: none;
+          border: 1px solid #DEDEDE;
+          width: vw(27px);
+          height: vw(27px);
+          cursor: pointer;
+          border-radius: vw(5px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: vw(14px);
+          font-weight: bold;
+          color: #fff;
+          &.add {
+            &::before {
+              content: "+"; // 플러스(+) 기호 추가
+            }
+          }
+          &.delete {
+            &::before {
+              content: "-"; // 마이너스(-) 기호 추가
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.loginWrap[login-step="join"] {
+  .loginWrap__join {
+    display: block;
+    padding-top: vw(140px);
+  }
+  .joinList {
+    padding-inline: vw(30px);
+    display: flex;
+    flex-direction: column;
+    gap: vw(56px);
+    &__item {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__date {
+      font-size: vw(20px);
+      color:#fff;
+    }
+    &__btn {
+      border-radius: vw(20px);
+      width: vw(63px);
+      height: vw(29px);
+      font-size: vw(14px);
+      color:#000;
+      font-weight:  700;
+      background-color: #00FFE9;
+      cursor: pointer;
+    }
+  }
+  .loginStep {
+    display: none;
+  }
+}
+.loginWrap[login-step="success"] {
+  .loginStep {
+    display: none;
+  }
+  .loginWrap__success {
+    display: block;
+    font-size: vw(36px);
+    text-align: center;
+    padding: vw(67px) vw(34px);
+    h2 {
+      font-weight: 500;
+      color:#fff
+    }
+    .txt {
+      font-weight: 300;
+      color:#fff;
+      word-break: keep-all;
+      &.color-yellow {
+        color:#F6FB06;
+      }
+      & + .txt {
+        margin-top: vw(40px);
+      }
+    }
+  }
+}
+
+
+
+
