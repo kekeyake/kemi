@@ -194,11 +194,19 @@ $steps: 1 20%, 2 40%, 3 60%, 4 80%, 5 100%;
   }
 }
 .loginWrap[login-step="1"] {
+  .loginStep {
+    top:vw(310px);
+  }
   .loginStep__back {
     display: none;
   }
   .loginWrap__layer {
     display: none;
+  }
+}
+.loginWrap[login-step="2"] {
+  .loginStep {
+    top:vw(310px);
   }
 }
 .loginWrap[login-step="2"],

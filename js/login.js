@@ -64,6 +64,19 @@ function initializeMbtiButtons() {
     button.addEventListener("click", () => {
       activateMbtiButtons(mbtiButtons, index);
       updateStepDataWithActiveMbti(button); // 선택된 MBTI를 stepData에 저장
+
+      const loginWrap = document.querySelector(".loginWrap");
+      const currentStep = getCurrentStep();
+
+      if (currentStep === "4") {
+        const mbtiLevel = button.getAttribute("mbti-level");
+        if (mbtiLevel) {
+          // 현재 단계가 4이면, 선택과 동시에 Step 5로 이동
+          loginWrap.setAttribute("login-step", "5");
+        } else {
+          alert("Please select a valid MBTI level.");
+        }
+      }
     });
   });
 }

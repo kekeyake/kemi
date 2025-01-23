@@ -205,11 +205,18 @@ body {
   width: 100% !important;
 }
 
+.loginWrap[login-step="1"] .loginStep {
+  top: 82.6666666667vw;
+}
 .loginWrap[login-step="1"] .loginStep__back {
   display: none;
 }
 .loginWrap[login-step="1"] .loginWrap__layer {
   display: none;
+}
+
+.loginWrap[login-step="2"] .loginStep {
+  top: 82.6666666667vw;
 }
 
 .loginWrap[login-step="2"] .loginStep__back,
